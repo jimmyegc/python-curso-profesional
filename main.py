@@ -180,3 +180,22 @@ print(message.index('!'))
 
 message2 = message[1:]
 print(message2)
+
+# Strings como listas ( split join)
+# split -> lista
+# join -> String
+courses = "Python PHP Ruby Django MongoDB"
+list_courses = courses.split(' ')
+
+print(courses)
+print(list_courses)
+
+messages_courses = ' '.join(courses)
+print(messages_courses)
+print(type(messages_courses))
+
+name = "Jimmy"
+last_name = "Garcia"
+
+full_name = name + last_name
+print(full_name)
