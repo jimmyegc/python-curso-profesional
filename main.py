@@ -194,8 +194,69 @@ messages_courses = ' '.join(courses)
 print(messages_courses)
 print(type(messages_courses))
 
+# forma 1 de generar un string
 name = "Jimmy"
 last_name = "Garcia"
 
-full_name = name + last_name
+full_name = name + " " +last_name
 print(full_name)
+
+# forma 2 de generar un string 
+full_name = ' '.join([name, last_name])
+print(full_name)
+
+# forma 3 (%s)
+full_name = 'El nombre completo es: %s %s' %(name, last_name)
+print(full_name)
+
+# forma 4 (format)
+base = 'El nombre completo es: {} {}. Su edad es: {}'
+full_name = base.format(name, last_name, 45)
+
+print(full_name)
+
+#name = input('Ingresa tu nombre:')
+#last_name = input('Ingresa tu apellido:')
+#age = input('Ingresa tu edad:')
+#full_name = base.format(name, last_name, age)
+#print(full_name)
+
+base = 'El nombre completo es: {name} {last_name}. Su edad es: {age}'
+full_name = base.format(age=45, name=name, last_name=last_name)
+print(full_name)
+
+# F-string
+full_name = f"El nombre completo es: {name} {last_name}"
+print(full_name)
+
+# Print
+name = "Jimbo"
+last_name = "Borroso"
+
+print("El nombre completo es:", name, last_name, sep="***") # sep = Separación
+
+# Busqueda en listas
+title = "   Curso profesional de Python!   "
+print (
+  'Curso' in title
+)
+
+print(
+  title.count('Curso')
+)
+
+print(
+  title.lower().startswith('c')
+)
+
+print(
+  title.endswith("!")
+)
+
+print(title.strip()) # Standarizar
+
+print(
+  title.find('P')
+)
+
+print('6'.isnumeric())
