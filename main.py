@@ -260,3 +260,156 @@ print(
 )
 
 print('6'.isnumeric())
+
+# Diccionarios | clave (llave) : valor
+# String, tuplas, int, float, booleans
+
+usuario = {
+  "name": "jimbo",
+  "age": 45,
+  "active": True,
+  'courses': ["Python", "Django", "Redis"],
+  'settings': (123, True)
+}
+
+print(usuario)
+
+print('name' in usuario)
+print(
+  usuario['name']
+)
+
+print(usuario.get('password', 'Lo siento, el valor no existe.'))
+
+usuario['last_name'] = "Rosso"
+print(usuario)
+
+# keys, values, items
+print('--- keys ---')
+print(
+  list(usuario.keys())
+)
+
+# print(tuple(usuario.keys()))
+
+print('--- values ---')
+print(
+  list(usuario.values())
+)
+
+print('--- items ---')
+print(
+  list(usuario.items())
+)
+
+print(len(usuario))
+
+usuario.update({
+  'name': 'Mi nombre',
+  'last_name': "Apellido",
+  # 'courses': None
+})
+
+print(usuario)
+
+usuario.setdefault('id', 1000)
+print(usuario)
+
+courses = usuario.get('courses', [])
+courses.append('React')
+courses.append('Vue')
+
+print(usuario)
+
+del usuario['courses']
+print(usuario)
+
+value = usuario.pop('settings')
+print(usuario)
+
+usuario.clear()
+print(usuario)
+
+# Ciclos y condiciones
+
+# None
+
+# True / False
+
+"""
+if <bool>:
+    print("hola mundo)
+    print("Nos encontramos en el curso de Python)
+"""
+sum = 5 + 3
+if sum > 35:
+    print("Hola, la condición es True")
+    print("Nos encontramos en el bloque del if.")
+
+print("Fin!")
+
+# "", 0, 0.0, False, [], (), {}, None ->>> Falsos
+
+value = "Elmer"
+if value:
+    print("La variable tiene un valor")
+
+# Not
+value = ""
+if not value:
+    print(">>> La variable no posee un valor")
+else:
+    print("La condición no se cumple")
+
+# Ifs anidados
+number1 = 10
+number2 = 20
+
+if number1 >= 10:
+    print("Number1 es mayor igual a 10.")
+
+    if number1 > number2:
+        print("Number1 es mayor a number2.")
+    else:
+        print("Number1 no es mayor a number2.")
+
+
+color = "Rojo"
+
+"""
+if color == "Verde":
+    print("Puedes continuar")
+else: 
+    if color == "Amarillo":
+        print("Alto parcial")
+    
+    if color == "Rojo":
+        print("Alto total")
+"""
+
+if color == "Verde":
+    print("Puedes continuar")
+elif color == "Amarillo":
+    print("Alto parcial")
+elif color == "Rojo":
+    print("Alto total")
+else:
+    print("El color no es válido")
+
+# Match -> Switch
+
+score = 5
+match score:
+    case 10:
+        print("Felicidades, tu calificación es 10.")    
+    case 9 | 8:
+        print("Felicidades, tu calificación es aprobatoria.")
+    case 6 | 7:
+        print("Aprobaste la materia.")
+    case _:
+        print("Lo sentimos calificación no aprobatoria.")
+
+# Operador ternario ( One liner )
+score = 15 
+message = 'Aprobaste la materia' if score > 5 else 'No aprobaste la materia'
+print(message)
