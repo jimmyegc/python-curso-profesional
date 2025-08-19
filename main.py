@@ -413,3 +413,75 @@ match score:
 score = 15 
 message = 'Aprobaste la materia' if score > 5 else 'No aprobaste la materia'
 print(message)
+
+# Ciclos | for-each & while
+
+numbers = [1,2,3,4,5]
+user = {
+    "name": "Jimbo",
+    "age:": 40,
+    "password": "password123"
+}
+
+"""
+for <variable> in <collection>:
+"""
+
+for n in numbers:
+    print('Hola, bloque...', n)
+
+for key,value in user.items():
+    print(key, value)
+
+# Range
+for number in range(10): # 0-9
+    print(number)
+
+print("---")
+
+for number in range(5, 10): # 5-9
+    print(number)
+
+print("--- while")
+
+# While
+""" 
+while <condition>:
+
+"""
+
+counter = 0
+while counter < 10:    
+    print("valor:", counter)
+    counter += 1
+
+print ('--->>>')
+"""
+from random import randint
+
+number = None 
+random_number = randint(0,10)
+hits = 0
+
+while number != random_number and hits < 3:
+    number = int(input("Ingresa un numero:"))
+    if random_number > number:
+        print('El numero aleatorio es mayor')
+    else:
+        print('El numero aleatorio es menor')
+    hits += 1
+else:
+  if number == random_number:
+    print(f'Felicidades, encontraste el numero {random_number}')
+  else:
+    print('Game over')
+"""
+
+# continue - break
+for number in range(1, 101):
+    if number %2 ==0: # Se salta el número par
+        continue
+    if number == 11: #Termina
+        break
+    print(number)
+
