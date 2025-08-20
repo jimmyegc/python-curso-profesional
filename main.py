@@ -485,3 +485,116 @@ for number in range(1, 101):
         break
     print(number)
 
+# pass - bloques vacios
+var = None
+if var == None: 
+    print('hola')
+
+# Funciones
+# def <nombre_de_la_funcion>(<parametros, >):
+
+def say_hello():
+    print('hola mundo desde una función')
+
+say_hello()
+
+def count_to(number):
+    for n in range(number):
+        print(n)
+
+def multiply(number1, number2):
+    result = number1 * number2
+    return result
+
+print(f"El resultado de la operación es {result}")
+
+# count_to(10)    
+print(multiply(2, 5))
+
+def full_name(first_name, last_name, prefix):
+    full_name = f'{prefix} {first_name} {last_name}'
+    return full_name
+  
+print(
+    full_name(
+        prefix='Mr.',
+        first_name='P.',
+        last_name='Mosh'
+    )
+)
+
+def calculate_total(price, tax, discount = 0):
+    total = price + (price*tax) - discount 
+    return total
+
+total = calculate_total(100, 0.08, 10)
+print("Total", total)
+
+total = calculate_total(100, 0.08)
+print("Total", total)
+
+# Args 
+# * (Posición)
+# ** (Nombres)
+
+import builtins
+
+def suma(*numbers):
+    return builtins.sum(numbers)
+
+def show_info(username, email, *scores):
+    print('--- show info ---')
+    print(username)
+    print(email)
+
+    average = builtins.sum(scores) / len(scores)
+    print(average)
+
+"""result = 0
+for number in numbers:
+    result += number
+return result
+"""
+
+print(
+    suma(4, 5, 4, 2)
+)
+
+show_info(
+    'Jimbo',
+    'jimmy@gmail.com',
+    10, 9, 9, 8.5 # Tupla
+)
+
+# Kwargs
+def show_info2(**user):
+    print(user)
+
+show_info2(
+    username='Jimbo',
+    email='jimmy@gmail.com',
+    password="123456",
+    active=True,
+    courses=['Python', 'Flask', 'Django'],
+    last_login='2025',
+    is_super_user=True
+)
+
+def show_info3(*info, **details):
+    print("\n")
+    print(">>> info")
+    for value in info:
+        print(value)
+
+    print("\n")
+    print(">>> details")
+    for key, value in details.items():
+        print(key, value)
+
+show_info3(
+    'Jimbo', 'Rosso', 45, 'email@gmail.com',
+    courses=['Python', 'Flask', 'Django'],
+)
+
+# *args
+# **kwargs
