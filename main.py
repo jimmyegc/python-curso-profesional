@@ -598,3 +598,200 @@ show_info3(
 
 # *args
 # **kwargs
+
+# Scope
+# global - local
+username = "Jimbo"
+
+def show_info4():
+    username = "Rosso" #local
+    print(username)
+
+show_info4()
+print(username)
+
+# Funciones anidadas
+
+def outer_function():
+    message = "hola, nos encontramos en la funcion anidada"
+
+    def inner_function():
+        nonlocal message
+        message = "Info value"
+        
+    inner_function()
+    print(message)
+
+outer_function()
+
+# Variables como funciones
+def deposit(balance, amount=0):
+    return balance + amount
+
+def withdraw(balance, amount=0):
+    if amount> balance:
+        return None
+    return balance - amount
+
+def default(*args, **kwargs):
+    return '>>> Lo sentimos opción no válida'
+
+def handle_operation(callback, *args, **kwargs):
+    result = callback(*args, **kwargs)
+    print("Resultado", result)
+
+print(deposit(100, 10))
+print(withdraw(200, 40))
+
+func1 = deposit
+func2 = withdraw
+
+print(func1(100,20))
+print(func2(100, 101))
+
+options = {
+    'a': deposit,
+    'b': withdraw
+}
+"""
+print(options)
+
+option = input('Ingresa una opción (a/b):')
+balance = int(input('Ingresa tu balance:'))
+amount = int(input("Ingresa tu cantidad:"))
+
+
+
+function = options.get(
+    option,
+    lambda *args, **kwargs: 'Lo sentimos, opción no válida.'
+)
+
+handle_operation(
+    callback = function,
+    balance = balance,
+    amount = amount
+)
+"""
+
+"""
+function = options.get(option, default)
+total = function(balance, amount)
+print("Total", total)
+"""
+
+# Funciones Lambda (anonima)
+""" 
+lambda <parametros: <body> #siempre retornan un valor.
+"""
+# add = lambda number1, number2=0: number1 + number2
+# print(add(10,5))
+
+# Callbacks
+
+# Retornar funciones
+
+# Factory method
+""" def factory_operation(option): 
+    def deposit(balance, amount=0):
+        return balance + amount
+
+    def withdraw(balance, amount=0):
+        if amount> balance:
+            return None
+        return balance - amount
+
+    default = lambda *args, **kwargs: 'Lo sentimos, opción no válida.'
+
+    if option == 'deposit':
+        return deposit
+    
+    elif option == 'withdraw':
+        return withdraw
+    else: 
+        return default
+    
+option = input('ingresa una opción (deposit/withdraw):')    
+func = factory_operation(option)    
+
+print(func(100, 50))
+print(type (func))
+
+# Closure
+def multiply(number1): # Local
+
+    def operation(number2):
+        return number1 * number2
+    
+    return operation
+
+func_operation = multiply(10)
+print("Resultado es:")
+resultado = func_operation(3)
+print(resultado) """
+
+# Decoradores
+# A(B) -> C # A (Decorador) - B: Función base - C: Función decorada Base + nuevas líneas
+
+def decorator(func): # A 
+
+    def wrapper(*args, **kwargs):
+        print("Antes de llamado")
+        result = func(*args, **kwargs)
+        print("Despues llamado")
+        return result
+
+    return wrapper
+
+@decorator
+def hello_world():
+    print("Hola mundo!")
+
+hello_world()
+
+@decorator
+def suma(number1, number2):
+    return number1 + number2
+
+print(suma(20, 25))
+
+# Docstrings
+
+def full_name(first_name, last_name):
+    """Permite generar un nombre completo
+    Args:
+        - first_name (String)
+        - last_name (String)
+
+    Return: 
+        String
+    """
+    return f"{first_name} {last_name}"
+
+print(
+    full_name.__doc__
+)
+
+def palindromo(sentence): 
+    """Permite conocer su un string es o no un palindromo
+    
+    Args: 
+        - sentence (String)
+
+    Return:
+        - Bool
+
+    Examples:
+    >>> palindromo('oso')
+    True
+    """
+    sentence = sentence.lower().replace(" ", "")
+    return sentence == sentence[::-1]
+
+print(palindromo("oso"))
+print(palindromo("anita lava la tina"))
+print(palindromo("Jimbo Rosso"))
+
+
+
+
