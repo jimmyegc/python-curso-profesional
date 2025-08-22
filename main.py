@@ -792,6 +792,130 @@ print(palindromo("oso"))
 print(palindromo("anita lava la tina"))
 print(palindromo("Jimbo Rosso"))
 
+# Clases
+""" 
+class <NombreClase>(): (Pascal Case)
+    ...
+
+<variable> = NombreClase()    
+"""
+print("Clases")
+class User:
+    def __init__(self, username, password, email=None, rol='Organizer'):        
+        self.username = username
+        self._password = password # Privado (Name Mangling)
+        self.email = email
+        self.rol = rol
+    
+    def say_hello(self):
+        print(
+            "Hola, soy el usuario", self.username
+        )
+
+    def login(self, username, password):
+        if self.username == username and self.password == password:
+            self.say_hello()
+            return True
+        return False
+    
+    @property
+    def password(self):
+        if self.rol == 'admin':            
+            return self._password
+        
+        return None
+
+    @password.setter
+    def password(self, new_password):
+        self._password = new_password
+
+    def set_password(self, new_password):
+        self._password = new_password
+
+user1 = User(
+    username = "Jimbo",
+    password = "password123",
+    rol='admin'
+)
+
+print(user1.password)
+user1.password = "New password"
+print(user1.password)
+#print(user1.get_password)
+#user1.set_password("New password")
+#print(user1.password)
+
+"""
+user1 = User("Jimbo", "password123", "email@test.com")
+user1.__password = "cambio de contraseña"
+print(user1.__password)
+
+print(
+    user1.__dict__
+)
+
+user1.is_admin = True
+user1.courses = ['Python', 'Flask', 'Django']
 
 
+#user1.login('Jimbo', 'password123')
+    
+
+print(user1.username)
+print(user1.password)
+print(user1.email)
+print(user1.is_admin)
+print(user1.__dict__)
+"""
+
+"""
+user1.username = "jimmyegc"
+user1.password = "admin"
+user1.email = "email@gmail.com"
+
+print(user1)
+print(type (user1))
+print(user1.username)
+print(user1.password)
+print(user1.email)
+"""
+print ('--- Herencia ')
+# Herencia
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def login(self, username, password):
+        if(self.username == username and self.password == password):
+            return True
+        return False
+
+class Admin(User):
+    def __init__(self, username, password, email):
+        super().__init__(username, password)        
+        self.email = email
+
+    def send_email(self):
+        print(">>> Enviando correo a", self.email)
+
+    def login(self, username, password):
+        if super().login(username, password):
+            self.send_email()
+
+class Organizer(User):
+    ...
+
+admin = Admin('admin1', 'password', 'jimbo@gmail.com')
+organizer = Organizer('organizer1', 'password')
+
+print(admin.login('admin1', 'password'))
+print(organizer.login('organizer1', 'password'))
+
+""" 
+print(admin.username)
+print(admin.password)
+print(organizer.login('organizer', 'pass'))
+print(organizer.login('organizer1', 'password'))
+"""
 
